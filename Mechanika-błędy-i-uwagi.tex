@@ -1,0 +1,818 @@
+% Autor: Kamil Ziemian
+
+% --------------------------------------------------------------------
+% Podstawowe ustawienia i pakiety
+% --------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}  % Wykrywa przestarzałe i niewłaściwe
+% sposoby używania LaTeXa. Więcej jest w l2tabu English version.
+\documentclass[a4paper,11pt]{article}
+% {rozmiar papieru, rozmiar fontu}[klasa dokumentu]
+\usepackage[MeX]{polski}  % Polonizacja LaTeXa, bez niej będzie pracował
+% w języku angielskim.
+\usepackage[utf8]{inputenc}  % Włączenie kodowania UTF-8, co daje dostęp
+% do polskich znaków.
+\usepackage{lmodern}  % Wprowadza fonty Latin Modern.
+\usepackage[T1]{fontenc}  % Potrzebne do używania fontów Latin Modern.
+
+
+
+% ----------------------------
+% Podstawowe pakiety (niezwiązane z ustawieniami języka)
+% ----------------------------
+\usepackage{microtype}  % Twierdzi, że poprawi rozmiar odstępów w tekście.
+\usepackage{graphicx}  % Wprowadza bardzo potrzebne komendy do wstawiania
+% grafiki.
+\usepackage{verbatim}  % Poprawia otoczenie VERBATIME.
+\usepackage{textcomp}  % Dodaje takie symbole jak stopnie Celsiusa,
+% wprowadzane bezpośrednio w tekście.
+\usepackage{vmargin}  % Pozwala na prostą kontrolę rozmiaru marginesów,
+% za pomocą komend poniżej. Rozmiar odstępów jest mierzony w calach.
+% ----------------------------
+% MARGINS
+% ----------------------------
+\setmarginsrb
+{ 0.7in} % left margin
+{ 0.6in} % top margin
+{ 0.7in} % right margin
+{ 0.8in} % bottom margin
+{  20pt} % head height
+{0.25in} % head sep
+{   9pt} % foot height
+{ 0.3in} % foot sep
+
+
+
+% ----------------------------
+% Często przydatne pakiety
+% ----------------------------
+\usepackage{csquotes}  % Pozwala w prosty sposób wstawiać cytaty do tekstu.
+\usepackage{xcolor}  % Pozwala używać kolorowych czcionek (zapewne dużo
+% więcej, ale ja nie potrafię nic o tym powiedzieć).
+
+
+
+% ----------------------------
+% Pakiety do tekstów z nauk przyrodniczych
+% ----------------------------
+\let\lll\undefined  % Amsmath gryzie się z językiem pakietami do języka
+% polskiego, bo oba definiują komendę \lll. Aby rozwiązać ten problem
+% oddefiniowuję tę komendę, ale może tym samym pozbywam się dużego Ł.
+\usepackage[intlimits]{amsmath}  % Podstawowe wsparcie od American
+% Mathematical Society (w skrócie AMS)
+\usepackage{amsfonts, amssymb, amscd, amsthm}  % Dalsze wsparcie od AMS
+% \usepackage{siunitx}  % Do prostszego pisania jednostek fizycznych
+\usepackage{upgreek}  % Ładniejsze greckie litery
+% Przykładowa składnia: pi = \uppi
+\usepackage{slashed}  % Pozwala w prosty sposób pisać slash Feynmana.
+\usepackage{calrsfs}  % Zmienia czcionkę kaligraficzną w \mathcal
+% na ładniejszą. Może w innych miejscach robi to samo, ale o tym nic
+% nie wiem.
+
+
+
+% ##########
+% Tworzenie otoczeń "Twierdzenie", "Definicja", "Lemat", etc.
+\newtheorem{twr}{Twierdzenie}  % Komenda wprowadzająca otoczenie
+% ,,twr'' do pisania twierdzeń matematycznych
+\newtheorem{defin}{Definicja}  % Analogicznie jak powyżej
+\newtheorem{wni}{Wniosek}
+
+
+
+% ----------------------------
+% Pakiety napisane przez użytkownika.
+% Mają być w tym samym katalogu to ten plik .tex
+% ----------------------------
+\usepackage{mechanika}  % Pakiet napisany konkretnie dla tego pliku.
+\usepackage{latexshortcuts}
+\usepackage{mathshortcuts}
+
+
+
+% --------------------------------------------------------------------
+% Dodatkowe ustawienia dla języka polskiego
+% --------------------------------------------------------------------
+\renewcommand{\thesection}{\arabic{section}.}
+% Kropki po numerach rozdziału (polski zwyczaj topograficzny)
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}}
+% Brak kropki po numerach podrozdziału
+
+
+
+% ----------------------------
+% Ustawienia różnych parametrów tekstu
+% ----------------------------
+\renewcommand{\arraystretch}{1.2}  % Ustawienie szerokości odstępów między
+% wierszami w tabelach.
+
+
+
+% ----------------------------
+% Pakiet "hyperref"
+% Polecano by umieszczać go na końcu preambuły.
+% ----------------------------
+\usepackage{hyperref}  % Pozwala tworzyć hiperlinki i zamienia odwołania
+% do bibliografii na hiperlinki.
+
+
+
+
+
+% --------------------------------------------------------------------
+% Różne komendy zdefiniowane dla ułatwienia pracy z LaTeXem
+% --------------------------------------------------------------------
+
+
+
+
+
+
+% % Oznaczenia ,,nad i pod''. Wymyśl lepszą nazwę
+% \newcommand{\til}{\tilde}
+% \newcommand{\ul}{\underline}
+% \newcommand{\ol}{\overline}
+% \newcommand{\wh}{\widehat}
+% \newcommand{\wt}{\widetilde}
+
+% % Trzcionki matematyczne
+% \newcommand{\mr}{\mathrm}
+% \newcommand{\mb}{\mathbb}
+% \newcommand{\mc}{\mathcal}
+% \newcommand{\mf}{\mathfrak}
+% \newcommand{\mbf}{\mathbf}
+
+% % Strzałki
+% \newcommand{\ra}{\rightarrow}
+% \newcommand{\Ra}{\Rightarrow}
+% \newcommand{\lra}{\longrightarrow}
+% \newcommand{\xra}{\xrightarrow}
+% \newcommand{\ifonlyif}{\Longleftrightarrow}
+
+% % Częste zwroty
+% \newcommand{\wtw}{wtedy i~tylko wtedy}
+
+
+% % Wartość bezwzględna i normy
+% \providecommand{\absj}[1]{\lvert #1 \rvert}
+% \providecommand{\absd}[1]{\left| #1 \right|}
+% \providecommand{\absd}[1]{\left| \, #1 \, \right|}
+% % Zupełnie nie wiem, czemu to jest \providecommand
+% \newcommand{\norm}[1]{\left|\left| #1 \right|\right|}
+
+
+% % ##########
+% % Litery greckie
+% \newcommand{\al}{\alpha}
+% \newcommand{\be}{\beta}
+% \newcommand{\ga}{\gamma}
+% \newcommand{\Ga}{\Gamma}
+% \newcommand{\del}{\delta}
+% \newcommand{\Del}{\Delta}
+% \newcommand{\la}{\uplambda}
+% \newcommand{\eps}{\epsilon}
+% \newcommand{\veps}{\varepsilon}
+% \newcommand{\vp}{\varphi}
+% \newcommand{\om}{\omega}
+% \newcommand{\Om}{\Omega}
+% \newcommand{\si}{\sigma}
+% \newcommand{\Si}{\Sigma}
+% \newcommand{\tet}{\theta}
+
+
+% % ##########
+% % Standardowe używane w oznaczeniach litery o specjalnej czcionce
+% % \mb = \mathbb
+% \newcommand{\Cc}{\mc{C}}
+% \newcommand{\Dc}{\mc{D}}
+% \newcommand{\Hc}{\mc{H}}
+% \newcommand{\lc}{\mc{l}}
+% \newcommand{\Lc}{\mc{L}}
+% \newcommand{\N}{\mb{N}}
+% \newcommand{\R}{\mb{R}}
+% \newcommand{\Rn}{\R^{ n }}
+% \newcommand{\Rc}{\mc{R}}
+
+% \newcommand{\Rp}{\R_{ + }}
+
+
+% % Rzadziej używane oznaczenia literowe
+% % \mc = \mathcal
+% \newcommand{\B}{\mc{B}}
+% \newcommand{\Fc}{\mc{F}}
+% \newcommand{\M}{\mc{M}}
+% \newcommand{\Oc}{\mc{O}}
+% \newcommand{\T}{\mc{T}}
+% \newcommand{\Pc}{\mc{P}}
+
+% \newcommand{\Rt}{\R^{ 3 }}
+
+
+
+% % ##########
+% % Teoria mnogości
+% \newcommand{\set}[1]{\{ #1 \}}
+% \newcommand{\es}{\emptyset}
+% \newcommand{\subs}{\subset}
+% \newcommand{\setm}{\setminus}
+% \newcommand{\ti}{\times}
+
+
+% % ##########
+% % Algebra
+% \newcommand{\Real}{\mf{Re}}
+% \newcommand{\Imag}{\mf{Im}}
+% \newcommand{\ot}{\otimes}
+% \newcommand{\Tr}{\mr{Tr}}
+
+
+
+% % ##########
+% % Analiza matematyczna
+
+% % Granice
+% \newcommand{\Lim}{\lim\limits}
+% \newcommand{\Liminf}{\ul{\lim}}
+% \newcommand{\Limsup}{\ol{\lim}}
+
+% \newcommand{\nToInfty}{n \ra +\infty}
+
+% % Sumy
+% \newcommand{\Sum}{\sum\limits}
+
+% % Różniczkowanie i pochodne
+% \newcommand{\Cinfty}{\Cc^{ \infty }}
+
+% \newcommand{\de}{\mr{d}}
+% \newcommand{\dd}[3]{\fr{ \de^{ #1 } { #2 } }{ \de { #3 }^{ #1 } }}
+
+% \newcommand{\pr}{\partial}
+% \newcommand{\pd}[3]{\fr{ \pr^{ #1 } { #2 } }{ \pr { #3 }^{ #1 } }}
+
+% % Całki i całkowanie
+% \newcommand{\dx}{\de x}
+% \newcommand{\dk}{\, d}  % Różniczka Kończąca całkę
+
+% \newcommand{\sqrtTwo}{\sqrt{ 2 }}
+% \newcommand{\ovSqTwo}{\fr{ 1 }{ \sqrtTwo }}
+% \newcommand{\sqTwoPi}{\sqrt{ 2 \pi }}
+% \newcommand{\ovSqTwoPi}{\fr{ 1 }{ \sqrt{ 2 \pi } }}
+
+% \newcommand{\Int}{\int\limits}
+% \newcommand{\IntSet}[3]{\Int_{ #1 } #2 \, d#3} % Całka po zbiorze.
+% \newcommand{\IntL}[3]{ \Int_{ { #1 } }^{ { #2 } } \de#3 \, }
+% \newcommand{\IntCa}[2]{\Int #1 \, \de#2} % Juz z calkowaniem
+% \newcommand{\IntFi}[2]{\Int \de#1 \, #2} % Bardziej Fizyczna notacja;)
+% \newcommand{\IntWie}[3]{\Int_{ #1 } \de^{ #2 }#3 \,} % Wielowymiarowa
+% \newcommand{\IntTro}[1]{ \Int \de^{ 3 }#1 \,} % Trójwymiarowa
+% \newcommand{\IntDo}[5]{ \Int_{ #1 } \de^{ #2 }#3\, \de^{ #4 } #5 \; }
+
+
+
+% % ##########
+% % Analiza funkcjonalna
+% \newcommand{\da}{\dagger}
+
+% % Brakety (w analizie funkcjonalnej też się je często stosuje)
+% \newcommand{\lket}{\langle}
+% \newcommand{\rket}{\rangle}
+
+% % Przestrzenie L^{ p }
+% \newcommand{\Lj}{L^{ 1 }}
+% \newcommand{\Ld}{L^{ 2 }}
+% \newcommand{\Lp}{L^{ p }}
+% \newcommand{\LIj}{\Lc^{ 1 }}
+% \newcommand{\LIp}{\Lc^{ p }}
+% \newcommand{\LdJ}{\Ld( \R, \de \mu )}
+% \newcommand{\LdT}{\Ld( \R^{ 3 }, \de \mu )}
+% \newcommand{\Ldlim}{L^{ 2 }-\Lim}
+
+
+
+
+% % ########################################
+
+
+
+
+
+% % ####################
+% % Analiza matematyczna
+
+
+% % Całki i całkowanie
+% \newcommand{\Int}{\int\limits}
+% \newcommand{\IntL}[3]{ \Int_{ { #1 } }^{ { #2 } } \de#3 \; }
+% \newcommand{\IntCaJ}[2]{ \Int #1 \, \de#2 } % Juz z calkowaniem
+% % Całka Jeden
+% \newcommand{\IntCaD}[2] { \Int #1 \, d#2 } % Całka dwa
+% \newcommand{\IntFi}[2]{ \Int \de#1 \, #2 } % Bardziej Fizyczna notacja;)
+% \newcommand{\IntWie}[3]{ \Int_{ #1 } \de^{ #2 }#3 \; } % Wielowymiarowa
+% \newcommand{\IntDo}[5]{ \Int_{ #1 } \de^{ #2 }#3\, \de^{ #4 } #5 \; }
+
+% % ####################
+% % Całki w określonych granicach
+% \newcommand{\IntA}[1]{\Int_{ -\infty }^{ +\infty } \de #1 \;}
+% \newcommand{\IntB}[1]{\int_{ \R } \de #1 \;}
+% \newcommand{\IntC}[2]{\int_{ \R } #1 \, \de #2}
+% \newcommand{\IntD}[1]{\Int_{ 0 }^{ +\infty } \de #1 \;}
+
+
+
+
+% % ####################
+% % Edycja tekstu
+% \newcommand{\Jest}{\tb{Jest: }}
+% \newcommand{\Pow}{\tb{Powinno być: }}
+% \newcommand{\red}[1]{{\color{red} #1}}
+% \newcommand{\Prze}{{\color{red} Przemyśl.}}
+% \newcommand{\Pop}{{\color{red} Popraw.}}
+% \newcommand{\Prob}{{\color{red} Problem.}}
+% \newcommand{\Dok}{{\color{red} Dokończ.}}
+% \newcommand{\Pyt}{{\color{red} Pytanie.}}
+% \newcommand{\Main}[1]{ \begin{center} {\LARGE \tb{#1} } \end{center} }
+% \newcommand{\Field}[1]{ \begin{center} {\Large \tb{#1} } \end{center} }
+% \newcommand{\Work}[1]{ \begin{center} {\large \tb{#1}} \end{center} }
+
+
+
+
+
+
+
+
+
+% Koniec komend
+% ############################
+
+
+
+
+
+% ----------------------------
+% Pakiet "hyperref"
+% Polecano by umieszczać go na końcu preambuły.
+% ----------------------------
+\usepackage{hyperref} % Pozwala tworzyć hiperlinki i zamienia odwołania
+% do bibliografii na hiperlinki.\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+
+
+% % ####################
+% % Litery greckie
+% \newcommand{\al}{\alpha}
+% \newcommand{\be}{\beta}
+% \newcommand{\ga}{\gamma}
+% \newcommand{\del}{\delta}
+% \newcommand{\Del}{\Delta}
+% \newcommand{\la}{\uplambda}
+% \newcommand{\eps}{\epsilon}
+% \newcommand{\veps}{\varepsilon}
+% \newcommand{\vp}{\varphi}
+% \newcommand{\om}{\omega}
+% \newcommand{\Om}{\Omega}
+% \newcommand{\si}{\sigma}
+% \newcommand{\Si}{\Sigma}
+% \newcommand{\tet}{\theta}
+
+% % Standardowe oznaczenia literowe
+% \newcommand{\N}{\mb{N}}
+% \newcommand{\R}{\mb{R}}
+% \newcommand{\C}{\mb{C}}
+% \newcommand{\D}{\mc{D}}
+% \newcommand{\Hc}{\mc{H}}
+% \newcommand{\Lc}{\mc{L}}
+% \newcommand{\Rn}{\R^{ n }}
+% \newcommand{\Rc}{\mc{R}}
+% \newcommand{\Cc}{\mc{C}}
+% \newcommand{\lc}{\mc{l}}
+
+% % Mniej używane oznaczenia literowe
+% \newcommand{\B}{\mc{B}}
+% \newcommand{\Oc}{\mc{O}}
+% \newcommand{\Rp}{\R_{ + }}
+
+% ####################
+% Standardowe matematyczne symbole literowe
+% Mathbb
+% \newcommand{\C}{\mb{C}}
+% \newcommand{\N}{\mb{N}}
+% \newcommand{\R}{\mb{R}}
+% \newcommand{\Rn}{\R^{ n }}
+% \newcommand{\Rp}{\R_{ + }}
+
+% % Mathcal
+% \newcommand{\B}{\mc{B}}
+% \newcommand{\D}{\mc{D}}
+% \newcommand{\Fc}{\mc{F}}
+% \newcommand{\M}{\mc{M}}
+% \newcommand{\Rc}{\mc{R}}
+% \newcommand{\Cc}{\mc{C}}
+% \newcommand{\Oc}{\mc{O}}
+% \newcommand{\T}{\mc{T}}
+
+
+% % ####################
+% % teoria mnogości
+% \newcommand{\set}[1]{\{ #1 \}}
+% \newcommand{\es}{\emptyset}
+% \newcommand{\sset}{\subset}
+% \newcommand{\setm}{\setminus}
+% \newcommand{\ti}{\times}
+
+
+% % ####################
+% % Algebra
+% \newcommand{\Real}{\mf{Re}}
+% \newcommand{\Imag}{\mf{Im}}
+% \newcommand{\ot}{\otimes}
+% \newcommand{\Tr}{\mr{Tr}}
+
+
+% % ####################
+% % Analiza matematyczna
+
+% % Brakety
+% % W analizie funkcjonalnej też często się je stosuje
+% \newcommand{\lket}{\langle}
+% \newcommand{\rket}{\rangle}
+
+% % Przestrzenie L^{ p }
+% \newcommand{\Lj}{L^{ 1 }}
+% \newcommand{\Ld}{L^{ 2 }}
+% \newcommand{\Lp}{L^{ p }}
+% \newcommand{\LIj}{\Lc^{ 1 }}
+% \newcommand{\LIp}{\Lc^{ p }}
+% \newcommand{\LdJ}{\Ld( \R, \de \mu )}
+% \newcommand{\LdT}{\Ld( \R^{ 3 }, \de \mu )}
+% \newcommand{\Ldlim}{L^{ 2 }-\Lim}
+
+
+% % ####################
+% % Wartość bezwzględna i normy
+% \providecommand{\absj}[1]{\lvert #1 \rvert}
+% \providecommand{\absd}[1]{\left| #1 \right|}
+% \providecommand{\absd}[1]{\left| \, #1 \, \right|}
+% \newcommand{\norm}[1]{\left|\left| #1 \right|\right|}
+
+
+% % ####################
+% % Edycja tekstu
+% \newcommand{\tb}{\textbf}
+% \newcommand{\noi}{\noindent}
+% \newcommand{\start}{\noi \tb{--} {}}
+% \newcommand{\Str}[1]{\tb{Str. #1.}}
+% \newcommand{\StrWg}[2]{\tb{Str. #1, wiersz #2.}}
+% \newcommand{\StrWd}[2]{\tb{Str. #1, wiersz #2 (od dołu).}}
+% \newcommand{\Dow}{\tb{Dowód}}
+% \newcommand{\Center}[1]{\begin{center} #1 \end{center}}
+% \newcommand{\CenterTB}[1]{\Center{\tb{#1}}}
+% \newcommand{\Jest}{\tb{Jest: }}
+% \newcommand{\Pow}{\tb{Powinno być: }}
+% \newcommand{\red}[1]{{\color{red} #1}}
+% \newcommand{\Prze}{{\color{red} Przemyśl.}}
+% \newcommand{\Pop}{{\color{red} Popraw.}}
+% \newcommand{\Prob}{{\color{red} Problem.}}
+% \newcommand{\Dok}{{\color{red} Dokończ.}}
+% \newcommand{\Pyt}{{\color{red} Pytanie.}}
+% \newcommand{\Main}[1]{ \begin{center} {\LARGE \tb{#1} } \end{center} }
+% \newcommand{\Field}[1]{ \begin{center} {\Large \tb{#1} } \end{center} }
+% \newcommand{\Work}[1]{ \begin{center} {\large \tb{#1}} \end{center} }
+
+
+% % ##############################
+% % Oznaczenia dla Reeda, Simona
+
+
+
+% % Sumy
+% \newcommand{\Sum}{\sum\limits}
+
+% % Różniczkowanie i pochodne
+% \newcommand{\pr}{\partial}
+% \newcommand{\de}{\mr{d}}
+% \newcommand{\dd}[3]{\fr{ \de^{ #1 } { #2 } }{ \de { #3 }^{ #1 } }}
+% \newcommand{\pd}[3]{\fr{ \pr^{ #1 } { #2 } }{ \pr { #3 }^{ #1 } }}
+
+% % Całki
+% \newcommand{\Int}{\int\limits}
+% \newcommand{\IntA}[1]{\Int_{ -\infty }^{ +\infty } \de #1 \;}
+% \newcommand{\IntB}[1]{\int_{ \R } \de #1 \;}
+% \newcommand{\IntC}[1]{\Int_{ 0 }^{ +\infty } \de #1 \;}
+% \newcommand{\IntCa}[2]{ \Int #1 \, \de#2 } % Juz z calkowaniem
+% \newcommand{\IntFi}[2]{ \Int \de#1 \, #2 } % Bardziej Fizyczna notacja;)
+% \newcommand{\IntWie}[3]{ \int_{ #1 } \de^{ #2 }#3 \; } % Wielowymiarowa.
+% \newcommand{\IntDo}[5]{ \Int_{ #1 } \de^{ #2 }#3\, \de^{ #4 } #5 \; }
+% \newcommand{\IntL}[3]{ \int\limits_{ { #1 } }^{ { #2 } } \d#3 \; }
+
+% \usepackage{url}% Pozwala pisać ładnie znak ~.
+% \newcommand{\vt}{$(x_1,x_{2}, \ldots, x_n)$}
+% \newcommand{\vet}{(x_1,x_{2}, \ldots, x_n)}
+% \newcommand{\mr}{\mathrm}
+% \newcommand{\mb}{\mathbb}
+% \newcommand{\mf}{\mathbf}
+
+% \newcommand{\e}{\mr{e}}
+% \newcommand{\eb}{\mf{e}}
+% \newcommand{\ii}{\mr{i}}
+% \newcommand{\de}{\mr{d}}
+% \newcommand{\pr}{\partial}
+% \newcommand{\dd}[3]{\fr{ \de^{ #1 } #2 }{ \de #3^{ #1 } }}
+% \newcommand{\pd}[3]{\fr{ \pr^{ #1 } { #2 } }{ \pr { #3 }^{ #1 } }}
+% \newcommand{\Int}[2]{ \int #1 \, d#2 }
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+\begin{document}
+% ####################################################################
+
+
+
+% ######################################
+\Main{Mechanika --~błędy i~uwagi}  % Tytuł całego tekstu
+
+\vspace{\spaceTwo} \vspace{\spaceThree}
+% ######################################
+
+
+
+% ##################
+\Work{ % Autor i tytuł dzieła
+  Isaac Newton \\
+  ,,Matematyczne zasady filozofii przyrody'', \cite{Newton11} }
+
+\CenterTB{Błędy}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz} & Jest
+                              & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu & & \\
+    \hline
+    16  & &  2 & Dodajęy & Dodaję \\
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\vspace{\spaceTwo}
+
+
+
+
+
+% ##################
+\Work{ % Autor i tytuł dzieła
+  Władimir Arnold \\
+  ,,Metody matematyczne mechaniki klasycznej'', \cite{Arnold} }
+
+\CenterTB{Błędy}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz} & Jest
+                              & Powinno być \\ \cline{2-3}
+    & od góry & od dołu & & \\
+    \hline
+    81  &  5 & & $TM$ & $\TMx$ \\
+    81  &  9 & & $\bsym{ \eta_{ i } }$ & $\eta_{ i }$ \\
+    81  & &  5 & związką & wiązką \\
+    81  & &  3 & $\bsym{t}_{ 0 }$ & $t_{ 0 }$ \\
+    98  & &  3 & $\omega^{ 2 }$ & $\omega_{ 0 }^{ 2 }$ \\
+    124 & 13 & & $\bsym{Q}$ & $Q$ \\
+    225 & 13 & & $H( \pr L / \pr \pbd )$ & $H( \pr L / \pr \qbd )$ \\
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\vspace{\spaceTwo}
+
+
+
+
+
+% ##################
+\Work{ % Tytuł i autor działa
+  Roman Stanisław Ingarden, Andrzej Jamiołkowski \\
+  ,,Mechanika klasyczna'', \cite{IJ80} }
+
+
+\CenterTB{Uwagi}
+
+\start \Str{9--12}
+
+
+\vspace{\spaceTwo}
+
+
+
+
+
+% ##################
+\Work{
+  Lew D. Landau, Jewginij M. Lifszyc \\
+  ,,Mechanika'', \cite{LL06} }
+
+
+\CenterTB{Uwagi}
+
+\start \Str{14} Podana tu grupa Galileusza składa~się tylko z~pchnięć,
+co według mnie tylko zaciemnia strukturę symetrii czasoprzestrzeni
+Galileusza. Pełniejsze omówienie tej grupy można znaleźć w~książce
+W.~Arnolda ,,Metody matematyczne mechaniki klasycznej'' \cite{Arnold81}.
+
+\start \Str{13} Przemyślenie jest głębokie, ale przedstawione
+stanowczo zbyt krótko, aby było jasne. Spróbuję przedstawić tu pewne
+jego rozwinięcie.
+
+Przed wszystkim należy zauważyć, że należy tu rozróżnić jednorodność
+i~izotropowość w sensie geometrii przestrzeni i w sensie dynamiki.
+Cechy te traktowane jako cechy geometrii czasoprzestrzeni w sensie
+geometrii liniowej i różniczkowej, są niezależne od układu
+odniesienia. Przejdźmy teraz do problemu dynamiki. Po pierwsze z
+doświadczenia wiemy, że możemy przyjąć, iż przestrzeń jest
+euklidesowa, jak również że można znaleźć układ odniesienia w którym
+cząstki swobodne umieszczone w przestrzeni spoczywają. \\
+\start \Str{14} $\pd{}{ L }{ \mathbf{ v } }$ nie jest funkcją tylko
+kwadratu prędkości. Jest to wektor o składowych
+$( \pd{}{ L }{ \mathbf{ v }} )_{ i } = 2 \pd{}{ L }{ { v^{ 2 } } } v_{
+  i }$, czyli zależy on jawnie od składowych prędkości. Widać jednak,
+że stałość $\pd{}{ L }{ \mathbf{ v } }$ wymaga od nas stałości
+$\mathbf{ v }$. Jeżeli bowiem rozpatrzymy składową $x$ wektora
+(ściślej pola wektorowego) $\pd{}{ L }{ \mathbf{ v } }$, mamy warunek
+na stałość tego wyrażenia dla dowolnej wartości składowej $x$:
+$\pd{}{ L }{ { v^{ 2 } } } = \frac{ 1 }{ 2 \mathbf{ v }_{ x } }$.
+Wyrażenie to należy zakwestionować na paru poziomach, choćby dlatego,
+że jest osobliwe dla zerowych prędkości, co jest niedopuszczalne dla
+fizycznej teorii. Oczywiście, jeżeli sprawdzimy również warunek na
+$ y $ składową otrzymamy sprzeczny układ równań.
+
+\start \Str{14} Należałoby podać większą dyskusję prędkości względnej
+dwóch układów inercjalnych.
+
+\start \Str{15} Jak można ściślej uzasadnić, że rzeczywiście
+potrzebujemy liniowej zależności od prędkości prawej strony równania
+wyrażającego równoważność między dwoma lagrażjanami? \Dok
+
+\start \Str{22} Dyskusja ważności addytywnych zasad zachowania, ma
+swoją głębię i wagę, zaciemnia ona jednak pewne szczegóły. Autorzy gdy
+ją pisali musieli mieć na myśli procesy rozpraszania, nie wspomnieli
+jednak, że jeśli znana jest postać oddziaływania między dwoma
+cząstkami, również mamy możliwość wyciągnięcia z praw zachowania
+ważnych wniosków. Np. jeśli rozpatrujemy układ dwóch cząstek i znamy
+energię kinetyczną jednej z nich i energię oddziaływania, to możemy
+obliczyć pewne parametry ruchu drugiej.
+
+
+\CenterTB{Błędy}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz} & Jest
+                              & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu & & \\
+    \hline
+    56  & 12 & & poruszały się z tą samą prędkością & spoczywały \\
+    % & & & & \\
+    % & & & & \\
+    \hline
+  \end{tabular}
+\end{center}
+\noi
+\StrWd{27}{2} \\
+\Jest $S = S' + \mu \mf{V} \cdot \mf{R}' + \fr{ 1 }{ 2 } \mu V^{ 2 } t$ \\
+\Pow $S = S' + \mu \mf{V} \cdot \mf{R}'( t ) - \mu \mf{V} \cdot
+\mf{R}'( 0 ) + \fr{ 1 }{ 2 } \mu V^{ 2 } t$ \\
+
+\vspace{\spaceTwo}
+
+
+
+
+
+% ##################
+\Work{ % Autor i tytuł dzieła
+  Bogdan Skalmierski \\
+  ,,Mechanika z~wytrzymałością materiałów'', \cite{Ska83} }
+
+
+\CenterTB{Uwagi}
+
+\start \Str{21} We~wzorze w~drugiej linii zamiast
+\begin{displaymath}
+  \sqrt{1 - \left( \tfrac{ x }{ x_{ 0 } } \right)^{ 2 } }
+\end{displaymath}
+powinno być
+\begin{displaymath}
+  \mathrm{sgn}( \cos \varphi ) \, \sqrt{1 - \left( \tfrac{ x }{ x_{ 0 } }
+    \right)^{ 2 } },
+\end{displaymath}
+bo~wykorzystujemy jedynkę trygonometryczną by~wyrazić $\cos$ przez
+$\sin$. Ponieważ w~dalszym ciągu obliczeń podnosimy ten człon do
+kwadratu, ta niedokładność nie~wpływa na ostateczny wynik.
+
+\start \Str{36} Aby wyprowadzenie wzoru (3.21) było poprawne,
+potrzebujemy by
+$| \dot{ \eb }_{ 1 } \cdot \eb_{ 2 } | = \dot{ \eb }_{ 1 } \cdot
+\eb_{ 2 }$. Oznacza to, że~układ obraca się od~wektora $\eb_{ 1 }$
+do~$\eb_{ 2 }$.
+
+
+\CenterTB{Błędy}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz} & Jest
+                              & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu & & \\
+    \hline
+    12  & 16 & & można określić & będziemy oznaczali \\
+    13  & & 10 & $\mathbf{ b }_{ y }$ & $\mathbf{ a }_{ y }$ \\
+    17  &  3 & & $(\mathbf{ a } \cdot \mathbf{ c } ) \cdot \mathbf{ b }
+               - ( \mathbf{ c } \cdot \mathbf{ b } ) \cdot \mathbf{ a }$
+           & $(\mathbf{ a } \cdot \mathbf{ c } ) \mathbf{ b }
+             - ( \mathbf{ c } \cdot \mathbf{ b } ) \mathbf{ a }$ \\
+    21  &  4 & & $\frac{ y }{ { }_{ 0 } }$ & $\frac{ y }{ { y }_{ 0 } }$ \\
+    21  &  4 & & $\sqrt{ 1 \:\: \left( \frac{ x }{ x_{ 0 } }
+               \right)^{ 2 } } $
+           & $\sqrt{ 1 - \left( \frac{ x }{ x_{ 0 } } \right)^{ 2 } } $ \\
+    23  & &  9 & $+2\beta \cos( 2\omega t )$ & $-2\beta
+                                             \cos( 2\omega t )$ \\
+    31  & 13 & & $x_{ 2 } \pd{}{ x_{ 2 } }{ r }$
+           & $\dot{ x }_{ 2 } \pd{}{ x_{ 2 } }{ r }$ \\
+    31  & &  5 & $\mathbf{ a } \pd{}{ \mathbf{ r } }{ q_{ j } }$
+           & $\mathbf{ a } \cdot \pd{}{ \mathbf{ r } }{ q_{ j } }$ \\
+    32  &  8 & & $\pd{}{ { \mathbf{ r }^{ 2 } } }{ { q^{ j } } }$
+           & $\pd{}{ \mathbf{ r } }{ { q^{ j } } }$ \\
+    34  &  6 & & $\dot{ \mathbf{ e } }_{ i } \mathbf{ e }_{ j }$
+           & $\dot{ \mathbf{ e } }_{ i } \cdot \mathbf{ e }_{ j }$ \\
+    34  &  8 & & $\mathbf{ e }_{ i } \mathbf{ e }_{ j }$
+           & $\mathbf{ e }_{ i } \cdot \mathbf{ e }_{ j }$ \\
+    34  & 10 & & $\dot{ \mathbf{ e } }_{ i } \mathbf{ e }_{ j }
+                + \mathbf{ e }_{ i } \dot{ \mathbf{ e } }_{ j }$
+           & $\dot{ \mathbf{ e } }_{ i } \cdot \mathbf{ e }_{ j }
+             + \mathbf{ e }_{ i } \cdot \dot{ \mathbf{ e } }_{ j }$ \\
+    34  & 11 & & $\dot{ \mathbf{ e } }_{ i } \mathbf{ e }_{ j }$
+           & $\dot{ \mathbf{ e } }_{ i } \cdot \mathbf{ e }_{ j }$ \\
+    34  & 12 & & $\dot{ \mathbf{ e } }_{ i } \mathbf{ e }_{ j }$
+           & $\dot{ \mathbf{ e } }_{ i } \cdot \mathbf{ e }_{ j }$ \\
+    36  & 16 & & $( \xi_{ 1 } \dot{ \mathbf{ e } }_{ 1 } + \xi_{ 2 }
+                \dot{ \mathbf{ e } }_{ 2 }  ) \mathbf{ e }_{ 1 }$
+           & $( \xi_{ 1 } \dot{ \mathbf{ e } }_{ 1 } + \xi_{ 2 }
+             \dot{ \mathbf{ e } }_{ 2 }  ) \cdot \mathbf{ e }_{ 1 }$ \\
+    36  & 16 & & $( \xi_{ 1 } \dot{ \mathbf{ e } }_{ 1 } + \xi_{ 2 }
+                \dot{ \mf{ e } }_{ 2 }  ) \mf{ e }_{ 2 }$
+           & $( \xi_{ 1 } \dot{ \mf{ e } }_{ 1 } + \xi_{ 2 }
+             \dot{ \mf{ e } }_{ 2 }  ) \cdot \mf{ e }_{ 2 }$ \\
+    36  & 18 & & $\dot{ \mf{ e } }_{ 1 } \mf{ e }_{ 2 }$
+           & $\dot{ \mf{ e } }_{ 1 } \cdot \mf{ e }_{ 2 }$ \\
+    36  & 20 & & $\dot{ \mf{ e } }_{ 1 } \mf{ e }_{ 2 }$
+           & $\dot{ \mf{ e } }_{ 1 } \cdot \mf{ e }_{ 2 }$ \\
+    % & & & & \\
+    \hline
+  \end{tabular}
+\end{center}
+\noi
+\StrWg{31}{13} \\
+\Jest $( \dotx_{ 1 } \ib + \dotx_{ 2 } \jb )
+\left( \pd{}{ x_{ 1 } }{ r } \ib + \pd{}{ x_{ 2 } }{ r } \jb \right)
+\cdot \fr{ 1 }{ \bsym{ 1 } }$ \\
+\Pow $( \dotx_{ 1 } \ib + \dotx_{ 2 } \jb )
+\cdot \left( \pd{}{ x_{ 1 } }{ r } \ib + \pd{}{ x_{ 2 } }{ r } \jb \right)
+\fr{ 1 }{ | \bsym{ 1 } | }$ \\
+
+
+
+
+
+% #####################################################################
+% #####################################################################
+% Bibliografia
+\bibliographystyle{alpha} \bibliography{Bibliography}{}
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}
