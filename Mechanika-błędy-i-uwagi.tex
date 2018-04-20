@@ -359,40 +359,6 @@
 
 
 
-% % ####################
-% % Litery greckie
-% \newcommand{\al}{\alpha}
-% \newcommand{\be}{\beta}
-% \newcommand{\ga}{\gamma}
-% \newcommand{\del}{\delta}
-% \newcommand{\Del}{\Delta}
-% \newcommand{\la}{\uplambda}
-% \newcommand{\eps}{\epsilon}
-% \newcommand{\veps}{\varepsilon}
-% \newcommand{\vp}{\varphi}
-% \newcommand{\om}{\omega}
-% \newcommand{\Om}{\Omega}
-% \newcommand{\si}{\sigma}
-% \newcommand{\Si}{\Sigma}
-% \newcommand{\tet}{\theta}
-
-% % Standardowe oznaczenia literowe
-% \newcommand{\N}{\mb{N}}
-% \newcommand{\R}{\mb{R}}
-% \newcommand{\C}{\mb{C}}
-% \newcommand{\D}{\mc{D}}
-% \newcommand{\Hc}{\mc{H}}
-% \newcommand{\Lc}{\mc{L}}
-% \newcommand{\Rn}{\R^{ n }}
-% \newcommand{\Rc}{\mc{R}}
-% \newcommand{\Cc}{\mc{C}}
-% \newcommand{\lc}{\mc{l}}
-
-% % Mniej używane oznaczenia literowe
-% \newcommand{\B}{\mc{B}}
-% \newcommand{\Oc}{\mc{O}}
-% \newcommand{\Rp}{\R_{ + }}
-
 % ####################
 % Standardowe matematyczne symbole literowe
 % Mathbb
@@ -433,78 +399,6 @@
 % % ####################
 % % Analiza matematyczna
 
-% % Brakety
-% % W analizie funkcjonalnej też często się je stosuje
-% \newcommand{\lket}{\langle}
-% \newcommand{\rket}{\rangle}
-
-% % Przestrzenie L^{ p }
-% \newcommand{\Lj}{L^{ 1 }}
-% \newcommand{\Ld}{L^{ 2 }}
-% \newcommand{\Lp}{L^{ p }}
-% \newcommand{\LIj}{\Lc^{ 1 }}
-% \newcommand{\LIp}{\Lc^{ p }}
-% \newcommand{\LdJ}{\Ld( \R, \de \mu )}
-% \newcommand{\LdT}{\Ld( \R^{ 3 }, \de \mu )}
-% \newcommand{\Ldlim}{L^{ 2 }-\Lim}
-
-
-% % ####################
-% % Wartość bezwzględna i normy
-% \providecommand{\absj}[1]{\lvert #1 \rvert}
-% \providecommand{\absd}[1]{\left| #1 \right|}
-% \providecommand{\absd}[1]{\left| \, #1 \, \right|}
-% \newcommand{\norm}[1]{\left|\left| #1 \right|\right|}
-
-
-% % ####################
-% % Edycja tekstu
-% \newcommand{\tb}{\textbf}
-% \newcommand{\noi}{\noindent}
-% \newcommand{\start}{\noi \tb{--} {}}
-% \newcommand{\Str}[1]{\tb{Str. #1.}}
-% \newcommand{\StrWg}[2]{\tb{Str. #1, wiersz #2.}}
-% \newcommand{\StrWd}[2]{\tb{Str. #1, wiersz #2 (od dołu).}}
-% \newcommand{\Dow}{\tb{Dowód}}
-% \newcommand{\Center}[1]{\begin{center} #1 \end{center}}
-% \newcommand{\CenterTB}[1]{\Center{\tb{#1}}}
-% \newcommand{\Jest}{\tb{Jest: }}
-% \newcommand{\Pow}{\tb{Powinno być: }}
-% \newcommand{\red}[1]{{\color{red} #1}}
-% \newcommand{\Prze}{{\color{red} Przemyśl.}}
-% \newcommand{\Pop}{{\color{red} Popraw.}}
-% \newcommand{\Prob}{{\color{red} Problem.}}
-% \newcommand{\Dok}{{\color{red} Dokończ.}}
-% \newcommand{\Pyt}{{\color{red} Pytanie.}}
-% \newcommand{\Main}[1]{ \begin{center} {\LARGE \tb{#1} } \end{center} }
-% \newcommand{\Field}[1]{ \begin{center} {\Large \tb{#1} } \end{center} }
-% \newcommand{\Work}[1]{ \begin{center} {\large \tb{#1}} \end{center} }
-
-
-% % ##############################
-% % Oznaczenia dla Reeda, Simona
-
-
-
-% % Sumy
-% \newcommand{\Sum}{\sum\limits}
-
-% % Różniczkowanie i pochodne
-% \newcommand{\pr}{\partial}
-% \newcommand{\de}{\mr{d}}
-% \newcommand{\dd}[3]{\fr{ \de^{ #1 } { #2 } }{ \de { #3 }^{ #1 } }}
-% \newcommand{\pd}[3]{\fr{ \pr^{ #1 } { #2 } }{ \pr { #3 }^{ #1 } }}
-
-% % Całki
-% \newcommand{\Int}{\int\limits}
-% \newcommand{\IntA}[1]{\Int_{ -\infty }^{ +\infty } \de #1 \;}
-% \newcommand{\IntB}[1]{\int_{ \R } \de #1 \;}
-% \newcommand{\IntC}[1]{\Int_{ 0 }^{ +\infty } \de #1 \;}
-% \newcommand{\IntCa}[2]{ \Int #1 \, \de#2 } % Juz z calkowaniem
-% \newcommand{\IntFi}[2]{ \Int \de#1 \, #2 } % Bardziej Fizyczna notacja;)
-% \newcommand{\IntWie}[3]{ \int_{ #1 } \de^{ #2 }#3 \; } % Wielowymiarowa.
-% \newcommand{\IntDo}[5]{ \Int_{ #1 } \de^{ #2 }#3\, \de^{ #4 } #5 \; }
-% \newcommand{\IntL}[3]{ \int\limits_{ { #1 } }^{ { #2 } } \d#3 \; }
 
 % \usepackage{url}% Pozwala pisać ładnie znak ~.
 % \newcommand{\vt}{$(x_1,x_{2}, \ldots, x_n)$}
@@ -577,7 +471,8 @@
 % ##################
 \Work{ % Autor i tytuł dzieła
   Władimir Arnold \\
-  ,,Metody matematyczne mechaniki klasycznej'', \cite{Arnold} }
+  ,,Metody matematyczne mechaniki klasycznej'',
+  \cite{ArnoldMetodyMatematyczneMechanikiKlasycznej81} }
 
 \CenterTB{Błędy}
 \begin{center}
@@ -588,17 +483,25 @@
                               & Powinno być \\ \cline{2-3}
     & od góry & od dołu & & \\
     \hline
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
     81  &  5 & & $TM$ & $\TMx$ \\
     81  &  9 & & $\bsym{ \eta_{ i } }$ & $\eta_{ i }$ \\
     81  & &  5 & związką & wiązką \\
     81  & &  3 & $\bsym{t}_{ 0 }$ & $t_{ 0 }$ \\
     98  & &  3 & $\omega^{ 2 }$ & $\omega_{ 0 }^{ 2 }$ \\
     124 & 13 & & $\bsym{Q}$ & $Q$ \\
-    225 & 13 & & $H( \pr L / \pr \pbd )$ & $H( \pr L / \pr \qbd )$ \\
-    % & & & & \\
-    % & & & & \\
-    % & & & & \\
-    % & & & & \\
+    186 & & 11 & $T^{ * }V$ & $T^{ * }V_{ x }$ \\
+    225 & 13 & & $H( \pr L / \pr \pbd, \qb )$
+           & $H( \pr L / \pr \qbd, \qb )$ \\
+    268 & &  8 & $g$ & $\bsym{g}$ \\
+    % 291 & & & & \\  % Jak się pisze w LaTeXu cyrlicą?
+    351 &  1 & & $P_{ * }TM_{ X }$ & $P_{ * }TM_{ x }$ \\
+    351 &  1 & & $T\mf{g}_{ p }^{ * })$ & $T\mf{g}_{ p }^{ * }$ \\
+    373 & 18 & & A.~Arez & A.~Avez \\
+    395 & & 11 & \emph{Poincar\'{e}'s} & \emph{Poincar\'{e}s} \\
     % & & & & \\
     \hline
   \end{tabular}
