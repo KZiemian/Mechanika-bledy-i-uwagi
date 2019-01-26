@@ -20,10 +20,10 @@
 % Podstawowe pakiety (niezwiązane z ustawieniami języka)
 % ----------------------------
 \usepackage{microtype}  % Twierdzi, że poprawi rozmiar odstępów w tekście.
-\usepackage{graphicx}  % Wprowadza bardzo potrzebne komendy do wstawiania
+% \usepackage{graphicx}  % Wprowadza bardzo potrzebne komendy do wstawiania
 % grafiki.
-\usepackage{verbatim}  % Poprawia otoczenie VERBATIME.
-\usepackage{textcomp}  % Dodaje takie symbole jak stopnie Celsiusa,
+% \usepackage{verbatim}  % Poprawia otoczenie VERBATIME.
+% \usepackage{textcomp}  % Dodaje takie symbole jak stopnie Celsiusa,
 % wprowadzane bezpośrednio w tekście.
 \usepackage{vmargin}  % Pozwala na prostą kontrolę rozmiaru marginesów,
 % za pomocą komend poniżej. Rozmiar odstępów jest mierzony w calach.
@@ -45,7 +45,7 @@
 % ----------------------------
 % Często przydatne pakiety
 % ----------------------------
-\usepackage{csquotes}  % Pozwala w prosty sposób wstawiać cytaty do tekstu.
+% \usepackage{csquotes}  % Pozwala w prosty sposób wstawiać cytaty do tekstu.
 \usepackage{xcolor}  % Pozwala używać kolorowych czcionek (zapewne dużo
 % więcej, ale ja nie potrafię nic o tym powiedzieć).
 
@@ -63,7 +63,7 @@
 % \usepackage{siunitx}  % Do prostszego pisania jednostek fizycznych
 \usepackage{upgreek}  % Ładniejsze greckie litery
 % Przykładowa składnia: pi = \uppi
-\usepackage{slashed}  % Pozwala w prosty sposób pisać slash Feynmana.
+% \usepackage{slashed}  % Pozwala w prosty sposób pisać slash Feynmana.
 \usepackage{calrsfs}  % Zmienia czcionkę kaligraficzną w \mathcal
 % na ładniejszą. Może w innych miejscach robi to samo, ale o tym nic
 % nie wiem.
@@ -127,6 +127,9 @@
 % --------------------------------------------------------------------
 
 
+
+
+
 % ####################################################################
 \begin{document}
 % ####################################################################
@@ -151,7 +154,8 @@
 % ##################
 \Work{ % Autor i tytuł dzieła
   Isaac Newton \\
-  ,,Matematyczne zasady filozofii przyrody'', \cite{Newton11} }
+  ,,Matematyczne zasady filozofii przyrody'',
+  \cite{NewtonMatematyczneZasadyFilozofiiPrzyrody2011} }
 
 \CenterTB{Błędy}
 \begin{center}
@@ -179,10 +183,10 @@
 
 % ######################################
 \newpage
-\Field{Matematyczne ujęcie mechaniki klasycznej} % Tytuł całego tekstu
+\section{Matematyczne ujęcie mechaniki klasycznej}
 
-% \vspace{\spaceTwo}
-\vspace{\spaceThree}
+\vspace{\spaceTwo}
+% \vspace{\spaceThree}
 % ######################################
 
 
@@ -191,7 +195,7 @@
 \Work{ % Autor i tytuł dzieła
   Władimir Arnold \\
   ,,Metody matematyczne mechaniki klasycznej'',
-  \cite{ArnoldMetodyMatematyczneMechanikiKlasycznej81} }
+  \cite{ArnoldMetodyMatematyczneMechanikiKlasycznej1981} }
 
 \CenterTB{Błędy}
 \begin{center}
@@ -202,6 +206,23 @@
                               & Powinno być \\ \cline{2-3}
     & od góry & od dołu & & \\
     \hline
+    12  & &  2 & matematycz netak & matematyczne tak \\
+    18  &  3 & & $\Phi( \xbf, \xbfd )$
+           & % $\mathbf{F}( \mathbf{ x }, \dot{ \mathbf{ x } } )$
+    \\ 
+    19  & &  1 & $\gbf\, \xbf$ & $- \gbf\, \xbf$ \\
+    23  &  4 & & $f( \xd )$ & $f( x )$ \\
+    24  &  1 & & Narysujem y & Narysujemy \\
+    34  & &  2 & zorientowane & zorientowanej \\
+    37  & & 10 & $\rbfdd - r \vpd^{ 2 }$ & $\rdd - r \vpd^{ 2 }$ \\
+    37  & &  6 & $\rd -$ & $\rdd -$ \\
+    60  & 10 & & napsać & napisać \\
+    62  &  2 & & $m\, \dot{ \mathbf{r} }$ & $m\, \dot{ r }$ \\
+    61  & &  8 & $\sqrt{ ( \qd_{ 1 }^{ 2 } + \qd_{ 2 }^{ 2 }
+                 + \qd_{ 3 }^{ 2 } ) }$
+           & $\frac{ 1 }{ 2 } m ( \qd_{ 1 }^{ 2 } + \qd_{ 2 }^{ 2 }
+             + \qd_{ 3 }^{ 2 } )$ \\
+    77  & &  9 & $S^{ 2 }$ & $S^{ 1 }$ \\
     % & & & & \\
     % & & & & \\
     % & & & & \\
@@ -210,11 +231,15 @@
     81  &  9 & & $\bsym{ \eta_{ i } }$ & $\eta_{ i }$ \\
     81  & &  5 & związką & wiązką \\
     81  & &  3 & $\bsym{t}_{ 0 }$ & $t_{ 0 }$ \\
+    86  &  2 & & \emph{Lagrange'a, to $( M, L )$}
+           & \emph{Lagrange'a $( M, L )$, to} \\
     98  & &  3 & $\omega^{ 2 }$ & $\omega_{ 0 }^{ 2 }$ \\
     124 & 13 & & $\bsym{Q}$ & $Q$ \\
+    169 & & 10 & Prykład & Przykład \\
     186 & & 11 & $T^{ * }V$ & $T^{ * }V_{ x }$ \\
     225 & 13 & & $H( \pr L / \pr \pbd, \qb )$
            & $H( \pr L / \pr \qbd, \qb )$ \\
+    242 & 3 & & \emph{Jacobiego} & Jacobiego \\
     268 & &  8 & $g$ & $\bsym{g}$ \\
     % 291 & & & & \\ % Jak się pisze w LaTeXu cyrlicą?
     351 &  1 & & $P_{ * }TM_{ X }$ & $P_{ * }TM_{ x }$ \\
@@ -225,8 +250,19 @@
     \hline
   \end{tabular}
 \end{center}
+\noi
+\StrWd{29}{4} \\
+\Jest tworzy sferę dwuwymiarową. \\
+\Pow   można przekształcić w~sferę dwuwymiarową. \\
+\StrWd{42}{10} \\
+\Jest Słońce znajduje~się nie w~centrum \\
+\Pow  ale~Słońce nie znajduje~się w~centrum \\
 
 \vspace{\spaceTwo}
+
+
+
+
 
 
 
@@ -337,7 +373,7 @@ odniesienia, bo nie wchodzi do nich pochodna wektorów bazy.
 
 % ######################################
 \newpage
-\Field{XX wieczne podręczniki} % Tytuł danego działu
+\Field{XX i~XXI wieczne podręczniki} % Tytuł danego działu
 
 \vspace{\spaceTwo} \vspace{\spaceThree}
 % ######################################
@@ -356,7 +392,7 @@ odniesienia, bo nie wchodzi do nich pochodna wektorów bazy.
 co według mnie tylko zaciemnia strukturę symetrii czasoprzestrzeni
 Galileusza. Pełniejsze omówienie tej grupy można znaleźć w~książce
 W.~Arnolda ,,Metody matematyczne mechaniki klasycznej''
-\cite{Arnold81}.
+\cite{ArnoldMetodyMatematyczneMechanikiKlasycznej1981}.
 
 \vspace{\spaceFour}
 
