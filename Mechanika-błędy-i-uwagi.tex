@@ -143,7 +143,7 @@
 
 
 % ######################################
-\Field{Pozycje klasyczne i~sprzed II~Wojny Światowej}
+\section{Pozycje klasyczne i~sprzed II~Wojny Światowej}
 % Tytuł danego działu
 
 % \vspace{\spaceTwo}
@@ -181,12 +181,15 @@
 
 
 
+
+
 % ######################################
 \newpage
 \section{Matematyczne ujęcie mechaniki klasycznej}
 
 \vspace{\spaceTwo}
 % \vspace{\spaceThree}
+
 % ######################################
 
 
@@ -196,6 +199,30 @@
   Władimir Arnold \\
   ,,Metody matematyczne mechaniki klasycznej'',
   \cite{ArnoldMetodyMatematyczneMechanikiKlasycznej1981} }
+
+
+\CenterTB{Uwagi}
+
+\start \textbf{Rozdział 7.} W~tym rozdziale nie znalazłem dowodu, ani
+żadnej wskazówki, że~należy samemu pokazać, iż w~lokalnym układzie
+współrzędnych zachodzi dobrze znany wzór:
+\begin{equation*}
+  d f = \partial_{ i } f\, d x^{ i }.
+\end{equation*}
+Zastosowanie tego wzoru znacznie ułatwia rozwiązywanie dalszych zadań
+w~tym rozdziale, a~niektóre nie wiem nawet jak zrobić bez niego.
+
+\vspace{\spaceFour}
+
+
+\start \textbf{Str. 71.} W~twierdzeniu Poincar\'{e}go o~powracaniu
+założenie o~ciągłości $g$ wydaje się bardzo nienaturalne. Wydaje się,
+że~najlepiej jest je zamienić na żądanie mierzalności tej funkcji.
+
+\vspace{\spaceFour}
+
+
+
 
 \CenterTB{Błędy}
 \begin{center}
@@ -209,7 +236,7 @@
     12  & &  2 & matematycz netak & matematyczne tak \\
     18  &  3 & & $\Phi( \xbf, \xbfd )$
            & % $\mathbf{F}( \mathbf{ x }, \dot{ \mathbf{ x } } )$
-    \\ 
+    \\
     19  & &  1 & $\gbf\, \xbf$ & $- \gbf\, \xbf$ \\
     23  &  4 & & $f( \xd )$ & $f( x )$ \\
     24  &  1 & & Narysujem y & Narysujemy \\
@@ -217,11 +244,12 @@
     37  & & 10 & $\rbfdd - r \vpd^{ 2 }$ & $\rdd - r \vpd^{ 2 }$ \\
     37  & &  6 & $\rd -$ & $\rdd -$ \\
     60  & 10 & & napsać & napisać \\
-    62  &  2 & & $m\, \dot{ \mathbf{r} }$ & $m\, \dot{ r }$ \\
     61  & &  8 & $\sqrt{ ( \qd_{ 1 }^{ 2 } + \qd_{ 2 }^{ 2 }
                  + \qd_{ 3 }^{ 2 } ) }$
            & $\frac{ 1 }{ 2 } m ( \qd_{ 1 }^{ 2 } + \qd_{ 2 }^{ 2 }
              + \qd_{ 3 }^{ 2 } )$ \\
+    62  &  2 & & $m\, \dot{ \mathbf{r} }$ & $m\, \dot{ r }$ \\
+    64  & &  8 & $G( x, p )$ & $G( x_{ 0 }, p )$ \\
     77  & &  9 & $S^{ 2 }$ & $S^{ 1 }$ \\
     % & & & & \\
     % & & & & \\
@@ -231,15 +259,17 @@
     81  &  9 & & $\bsym{ \eta_{ i } }$ & $\eta_{ i }$ \\
     81  & &  5 & związką & wiązką \\
     81  & &  3 & $\bsym{t}_{ 0 }$ & $t_{ 0 }$ \\
+    82  & 15 & & $m_{ 1 }${  }, & $m_{ 1 }$ \\
     86  &  2 & & \emph{Lagrange'a, to $( M, L )$}
            & \emph{Lagrange'a $( M, L )$, to} \\
     98  & &  3 & $\omega^{ 2 }$ & $\omega_{ 0 }^{ 2 }$ \\
     124 & 13 & & $\bsym{Q}$ & $Q$ \\
+    165 & &  9 & postc & postaci \\
     169 & & 10 & Prykład & Przykład \\
     186 & & 11 & $T^{ * }V$ & $T^{ * }V_{ x }$ \\
     225 & 13 & & $H( \pr L / \pr \pbd, \qb )$
            & $H( \pr L / \pr \qbd, \qb )$ \\
-    242 & 3 & & \emph{Jacobiego} & Jacobiego \\
+    242 &  3 & & \emph{Jacobiego} & Jacobiego \\
     268 & &  8 & $g$ & $\bsym{g}$ \\
     % 291 & & & & \\ % Jak się pisze w LaTeXu cyrlicą?
     351 &  1 & & $P_{ * }TM_{ X }$ & $P_{ * }TM_{ x }$ \\
@@ -253,14 +283,15 @@
 \noi
 \StrWd{29}{4} \\
 \Jest tworzy sferę dwuwymiarową. \\
-\Pow   można przekształcić w~sferę dwuwymiarową. \\
+\Powin można przekształcić w~sferę dwuwymiarową. \\
 \StrWd{42}{10} \\
 \Jest Słońce znajduje~się nie w~centrum \\
-\Pow  ale~Słońce nie znajduje~się w~centrum \\
+\Powin ale~Słońce nie znajduje~się w~centrum \\
+\StrWd{71}{15} \\
+\Jest  do swego\ldots \\
+\Powin dowolnie blisko swego\ldots \\
 
 \vspace{\spaceTwo}
-
-
 
 
 
@@ -304,32 +335,33 @@ odniesienia, bo nie wchodzi do nich pochodna wektorów bazy.
 
 \begin{itemize}
 \item[--] Str. 20.
-  $$\dd{}{ \mathbf{ e }_{ 1 } }{ t } = \boldsymbol{ \omega } \times
+  $$\de{}{ \mathbf{ e }_{ 1 } }{ t } = \boldsymbol{ \omega } \times
   \bold{ e }_{ 1 } \, ,$$
 \item[--] Str. 20.
-  $$\frac{ \tilde{ \de } \tilde{ \mathbf{ x } } }{ \de t } = \dd{}{
+  $$\frac{ \tilde{ \difPL } \tilde{ \mathbf{ x } } }{ \difPL t } = \de{}{
     \tilde{ x }^{ i }}{ t } \mathbf{ e }_{ i } \, ,$$
 \item[--] Str. 20. \ldots także z faktu, że
-  $\de \tilde{ x }^{ i } / \de t = \tilde{ \de } \tilde{ x }^{ i } /
-  \de t$\ldots
+  $\difPL \tilde{ x }^{ i } / \difPL t = \tilde{ \difPL } \tilde{ x }^{ i }
+  / \difPL t$\ldots
 \item[--] Str. 21.
   $$\mathbf{ v } = \tilde{ \mathbf{ v } } + \mathbf{ v }_{ 0 } +
   \boldsymbol{ \omega } \times \tilde{ \mathbf{ x } } \, ,$$
 \item[--] Str. 21.
-  $$\dd{}{ \mathbf{ v } }{ t } = \dd{}{ \tilde{ \mathbf{ v } } }{ t }
-  + \boldsymbol{ \omega } \times \tilde{ \mathbf{ v } } + \dd{}{
-    \mathbf{ v }_{ 0 } }{ t } + \dd{}{ \boldsymbol{ \omega } }{ t }
-  \times \tilde{ \bold{ x } } + \boldsymbol{ \omega } \times \bigg(
-  \frac{ \tilde{ \de } \tilde{ \bold{ x } } }{ \de t } + \boldsymbol{
-    \omega } \times \tilde{ \bold{ x } } \bigg) \, .$$ Sprawdzić.
-\item[--] Str. 24. Obraz odwzorowanie
-  $X : T \rightarrow E^{ 3N }$\ldots
+  $$\de{}{ \mathbf{ v } }{ t } = \de{}{ \tilde{ \mathbf{ v } } }{ t }
+  + \boldsymbol{ \omega } \times \tilde{ \mathbf{ v } } + \de{}{ \mathbf{ v }_{
+      0 } }{ t } + \de{}{ \boldsymbol{ \omega } }{ t } \times \tilde{
+    \bold{ x } } + \boldsymbol{ \omega } \times \bigg( \frac{ \tilde{
+      \difPL } \tilde{ \bold{ x } } }{ \difPL t } + \boldsymbol{ \omega }
+  \times \tilde{ \bold{ x } } \bigg) \, .$$ Sprawdzić.
+\item[--] Str. 24. Obraz odwzorowanie $X : T \rightarrow E^{ 3N }$\ldots
 \item[--] Str. 28. \ldots chwili $t \in T$ funkcje\ldots
 \item[--] Str. 36. \ldots oraz że nie zależy on od wyboru układu
   współrzędnych\ldots
 \end{itemize}
 
 \vspace{\spaceTwo}
+
+
 
 
 
@@ -467,7 +499,7 @@ obliczyć pewne parametry ruchu drugiej.
 \noi
 \StrWd{27}{2} \\
 \Jest $S = S' + \mu \mf{V} \cdot \mf{R}' + \fr{ 1 }{ 2 } \mu V^{ 2 } t$ \\
-\Pow $S = S' + \mu \mf{V} \cdot \mf{R}'( t ) - \mu \mf{V} \cdot
+\Powin $S = S' + \mu \mf{V} \cdot \mf{R}'( t ) - \mu \mf{V} \cdot
 \mf{R}'( 0 ) + \fr{ 1 }{ 2 } \mu V^{ 2 } t$ \\
 
 \vspace{\spaceTwo}
@@ -568,7 +600,7 @@ do~$\eb_{ 2 }$.
 $( \dotx_{ 1 } \ib + \dotx_{ 2 } \jb ) \left( \pd{}{ x_{ 1 } }{ r }
   \ib + \pd{}{ x_{ 2 } }{ r } \jb \right)
 \cdot \fr{ 1 }{ \bsym{ 1 } }$ \\
-\Pow
+\Powin
 $( \dotx_{ 1 } \ib + \dotx_{ 2 } \jb ) \cdot \left( \pd{}{ x_{ 1 } }{
     r } \ib + \pd{}{ x_{ 2 } }{ r } \jb \right)
 \fr{ 1 }{ | \bsym{ 1 } | }$ \\
